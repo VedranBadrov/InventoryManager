@@ -1,6 +1,4 @@
 class ManagersController < ApplicationController
-
-  http_basic_authenticate_with name: "userone", password: "userone", except: [:index, :show]
   def index
     @items = Item.all
   end
