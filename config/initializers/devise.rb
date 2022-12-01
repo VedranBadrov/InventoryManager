@@ -1,5 +1,17 @@
 # frozen_string_literal: true
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
 
+  def skip_format?
+    %w[html turbo_stream */*].include? request_format.to_s
+  end
+end
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -14,7 +26,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '9fe396a1c83cf1ccaf217342e2b8432929e4801451e6934bac3fb645bc48af3ca137207cd0368d55156d49f9e0fc4b4f1e1127842057d086058ed4d30673e140'
+  # config.secret_key = '57289c18263fcb94328132258a5e789b8c006699e7eb91966b917108de7c0d56d54b69f0e8171a9d3420e5e0af0b0ab31279effd1c2e2916ffbfcd3db31e8db8'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +36,6 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
@@ -71,6 +82,7 @@ Devise.setup do |config|
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
@@ -127,7 +139,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '3f3b8ec28b2a64bd67b66f4e5d076a5b3a6a8ec06bf618b6c689d1dcf181f5b350d103983ab4d8473c819c2095f15633e19123644ad3737575f63499c10178d7'
+  # config.pepper = '1fbe99b89fa020317a9d7d1755d422a183627f1ca13e730720b1cadf2395c0c9200c40bb713cd07490ef32e81193f6b52f8d742936094d5396fd267c7716b0c1'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -282,6 +294,9 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  end 
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
