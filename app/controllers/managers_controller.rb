@@ -1,4 +1,7 @@
 class ManagersController < ApplicationController
+  def index
+  end
+
   def list
     @items = Item.all
   end
@@ -12,23 +15,4 @@ class ManagersController < ApplicationController
 
   def delete
   end
-
-  
-
- # @item = Item.new(item_params)
-
- # if @item.save
-#    redirect_to @item
-#  else
- #   render :new, status: :unprocessable_entity
- # end
-
-
-
-
-
- # private
- #   def item_params
-   #   params.require(:item).permit(:name, :description, :quantity)
-  #  end
 end
