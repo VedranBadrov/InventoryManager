@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! #, except: [:show, :edit, :update, :destroy]
 
   # GET /items or /items.json
   def index
@@ -17,6 +18,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    #observer design pattern
   end
 
   # POST /items or /items.json

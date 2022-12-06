@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :suppliers
   
   #get 'managers/index'
   #get 'managers/list'
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "managers#index"
+  get "/beers", to: "managers#beers"
+  get "/fruits", to: "managers#fruits"
+  get "/suppliers", to: "managers#suppliers"
 
 
 end
