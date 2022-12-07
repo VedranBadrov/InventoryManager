@@ -1,5 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! #, except: [:show, :edit, :update, :destroy]
 
   # GET /suppliers or /suppliers.json
   def index
@@ -21,7 +22,7 @@ class SuppliersController < ApplicationController
 
   # POST /suppliers or /suppliers.json
   def create
-    @supplier = Supplier.new(supplier_params)
+    @supplier = Supplier.new
 
     respond_to do |format|
       if @supplier.save
@@ -65,6 +66,6 @@ class SuppliersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def supplier_params
-      params.require(:supplier).permit(:name, :type)
+      params.require(:supplier).permit(:sname, :provides)
     end
 end

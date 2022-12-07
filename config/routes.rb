@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :suppliers
-  
   #get 'managers/index'
   #get 'managers/list'
   #get 'managers/add'
@@ -9,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :managers
   resources :items
+  resources :suppliers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   root "managers#index"
   get "/beers", to: "managers#beers"
   get "/fruits", to: "managers#fruits"
+  get "/items", to: "managers#items"
   get "/suppliers", to: "managers#suppliers"
 
 
