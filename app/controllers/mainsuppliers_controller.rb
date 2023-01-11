@@ -9,7 +9,6 @@ class MainsuppliersController < ApplicationController
 
   # GET /mainsuppliers/1 or /mainsuppliers/1.json
   def show
-    @mainsupplier = Mainsupplier.index
   end
 
   # GET /mainsuppliers/new
