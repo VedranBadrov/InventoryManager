@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  type: 
+  supply: MyString
 
 two:
   name: MyString
-  type: 
+  supply: MyString
