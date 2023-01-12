@@ -7,5 +7,5 @@ class Item < ApplicationRecord
     #Validation for product name
     validates :name,
       :presence=> {:message=> "can't be empty" },
-      :length=> { minimum: 2 } 
+      :length=> { minimum: 2 }
 end

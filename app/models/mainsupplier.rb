@@ -1,4 +1,5 @@
 class Mainsupplier < ApplicationRecord
+
     #set up relationships with items
     has_many :items, class_name: "Item"    
 
