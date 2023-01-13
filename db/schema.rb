@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_11_163122) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_13_133543) do
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.text "description"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "supplier"
-    t.integer "supplier_id"
-  end
-
-  create_table "items2", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "description"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_163122) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

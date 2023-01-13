@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
     #Set up relationships with suppliers
-    belongs_to :Mainsupplier, class_name: 'Mainsupplier'
+    #belongs_to :Mainsupplier, class_name: 'Mainsupplier'
     
 
 

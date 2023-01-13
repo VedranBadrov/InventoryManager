@@ -1,7 +1,7 @@
 class Mainsupplier < ApplicationRecord
 
     #set up relationships with items
-    has_many :items, class_name: "Item"    
+    #has_many :items, class_name: "Item"    
 
     #validations for supplier name
     validates :name,

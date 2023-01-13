@@ -1,5 +1,6 @@
 <% if current_user %>
-Hello <%= current_user.email %>
+    <p>Hello <%= current_user.email %></p>
+    <p>You are a <%= current_user.role%></p>
 <% end %>
 
 <!DOCTYPE html>
