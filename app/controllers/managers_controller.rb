@@ -8,7 +8,7 @@ class ManagersController < ApplicationController
   end
   
   def fruits
-    fruits = HTTParty.get("https://www.fruityvice.com/api/fruit/all")
+    fruits = HTTParty.get("https://fruityvice.com/api/fruit/all")
     @fruits = JSON.parse(fruits.body)
   end
 end
